@@ -12,6 +12,11 @@ Vue.use(ElementUI)
 import VueUi from '@vue/ui'
 import { Editor, EditorContent } from 'tiptap'
 
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+Vue.use(VueAxios, axios)
+
 Vue.use(VueUi)
 Vue.config.productionTip = false
 
