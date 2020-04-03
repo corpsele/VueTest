@@ -8,7 +8,7 @@
                  :label="obj1.text"
                  :value="obj1.value"
                  :key="obj1.value"
-                 >
+      >
 
       </el-option>
     </el-select>
@@ -20,7 +20,7 @@
       <span>You have selected index = {{selectedIndex}}</span>
       <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">Cancel</el-button>
-    <el-button type="primary" @click="dialogVisible = false">OK</el-button>
+    <el-button type="primary" @click="okAction">OK</el-button>
   </span>
     </el-dialog>
     <el-table>
@@ -31,6 +31,9 @@
 </template>
 
 <script>
+  import VueAxios from "vue-axios";
+  import {AxiosInstance as Axios} from "axios";
+
   export default {
     name: "ListTest",
     data() {
@@ -47,7 +50,7 @@
     },
     methods: {
       selectedAction(num) {
-        console.log("selected value = "+num);
+        console.log("selected value = " + num);
         this.selectedIndex = num;
         this.dialogVisible = true;
       },
@@ -59,7 +62,33 @@
           .then(_ => {
             done();
           })
-          .catch(_ => {});
+          .catch(_ => {
+          });
+
+      },
+      requestRSS(num) {
+        let strApi = "";
+        switch (num) {
+          case 1:
+            strApi = "http://rss.rrys.tv/rss/feed/35535";
+            break;
+          case 2:
+            break;
+          default:
+            strApi = "";
+            break;
+        }
+
+        if (num != 0) {
+          Vue.axios.get(strApi).then((response) => {
+            console.log(response.data)
+          })
+        }
+
+      },
+      okAction() {
+        this.$options.methods.requestRSS(this.selectedIndex).bind(this)();
+        this.dialogVisible = false;
       }
     }
   }
