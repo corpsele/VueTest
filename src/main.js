@@ -11,6 +11,12 @@ Vue.use(ElementUI)
 // Vue.use(Cube)
 import VueUi from '@vue/ui'
 import { Editor, EditorContent } from 'tiptap'
+import Axo from 'axios'
+import qs from 'qs.js'
+
+Vue.prototype.$axios = Axo    //全局注册，使用方法为:this.$axios
+Vue.prototype.qs = qs           //全局注册，使用方法为:this.qs
+Vue.prototype.HOST = '/api'
 
 Vue.use(VueUi)
 Vue.config.productionTip = false
@@ -20,5 +26,8 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  mounted(){
+
+  }
 })

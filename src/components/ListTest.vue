@@ -8,19 +8,19 @@
                  :label="obj1.text"
                  :value="obj1.value"
                  :key="obj1.value"
-                 >
+      >
 
       </el-option>
     </el-select>
     <el-dialog
       title="提示"
       :visible.sync="dialogVisible"
-      width="30%"
-      :before-close="handleClose">
+      width="30%">
+<!--      :before-close="handleClose">-->
       <span>You have selected index = {{selectedIndex}}</span>
       <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">Cancel</el-button>
-    <el-button type="primary" @click="dialogVisible = false">OK</el-button>
+    <el-button type="primary" @click="okAction">OK</el-button>
   </span>
     </el-dialog>
     <el-table>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+
   export default {
     name: "ListTest",
     data() {
@@ -47,7 +48,7 @@
     },
     methods: {
       selectedAction(num) {
-        console.log("selected value = "+num);
+        console.log("selected value = " + num);
         this.selectedIndex = num;
         this.dialogVisible = true;
       },
@@ -59,7 +60,27 @@
           .then(_ => {
             done();
           })
-          .catch(_ => {});
+          .catch(_ => {
+          });
+      },
+      okAction() {
+        this.dialogVisible = false;
+        let strApi = ""
+        switch (this.selectedIndex) {
+          case 0:
+            return
+            break;
+          case 1:
+            strApi = this.HOST + "/rss/feed/35535"
+            break;
+          default:
+            return
+            break;
+        }
+        this.$axios.get(strApi).then((response) => {
+          console.log(response)
+        })
+
       }
     }
   }
