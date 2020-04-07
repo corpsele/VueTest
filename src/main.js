@@ -20,6 +20,15 @@ Vue.prototype.qs = qs           //全局注册，使用方法为:this.qs
 Vue.prototype.HOST = '/api'
 Vue.prototype.$x2js = new x2js() //创建x2js对象，挂到vue原型上
 
+// var koa = require('koa');
+import koa from 'koa'
+//npm install --save koa2-cors
+// var cors = require('koa2-cors');
+import cors from 'koa2-cors'
+let app = new koa();
+//开启
+app.use(cors());
+
 // Vue.use(xmljs)
 Vue.use(VueUi)
 Vue.config.productionTip = false

@@ -3,6 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const devEnv = require('./dev.env')
 
 module.exports = {
   dev: {
@@ -10,11 +11,11 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
+    proxyTable: devEnv.OPEN_PROXY === false ? {} : {
       '/api': {                                // 要代理的接口名
         target: 'http://rss.rrys.tv',   // 要代理的接口地址
         changeOrigin: true,                            // 允许跨域
-        pathRewrite: {'^/api': ''}            // 接口名重写
+        pathRewrite: {'^/api': '/'}            // 接口名重写
       }
     },
 
@@ -56,8 +57,14 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-
+    assetsPublicPath: './',
+    proxyTable: {
+      '/api': {                                // 要代理的接口名
+        target: 'http://rss.rrys.tv',   // 要代理的接口地址
+        changeOrigin: true,                            // 允许跨域
+        pathRewrite: {'^/api': '/'}            // 接口名重写
+      }
+    },
     /**
      * Source Maps
      */

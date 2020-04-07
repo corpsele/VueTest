@@ -86,7 +86,11 @@
             return
             break;
         }
-        this.$axios.get(strApi).then((response) => {
+        this.$axios.get(strApi, {
+          params:{
+
+          }
+        }).then((response) => {
           console.log(response)
 
           console.log(this.$x2js.xml2js(response.data))
