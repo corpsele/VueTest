@@ -23,9 +23,17 @@
     <el-button type="primary" @click="okAction">OK</el-button>
   </span>
     </el-dialog>
-    <el-table>
-      <el-row>1</el-row>
-      <el-row>2</el-row>
+    <el-table :data="arryData">
+      <el-table-column label="标题">
+        <template slot-scope="scope">
+          <span>{{ scope.row.title}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="ed2k">
+        <template slot-scope="scope">
+          <span>{{ scope.row.ed2k}}</span>
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
@@ -43,7 +51,8 @@
           {value: 1, text: "Seal Team"}
         ],
         dialogVisible: false,
-        selectedIndex: 0
+        selectedIndex: 0,
+        arryData: []
       }
     },
     methods: {
@@ -79,6 +88,15 @@
         }
         this.$axios.get(strApi).then((response) => {
           console.log(response)
+
+          console.log(this.$x2js.xml2js(response.data))
+          let obj = this.$x2js.xml2js(response.data)
+          console.log(obj["rss"])
+          let rss = obj["rss"]
+          let channel1 = rss["channel"]
+          let items = channel1["item"]
+          console.log(items)
+          this.arryData = items
         })
 
       }

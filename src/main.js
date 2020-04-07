@@ -13,11 +13,14 @@ import VueUi from '@vue/ui'
 import { Editor, EditorContent } from 'tiptap'
 import Axo from 'axios'
 import qs from 'qs.js'
+import x2js from 'x2js'
 
 Vue.prototype.$axios = Axo    //全局注册，使用方法为:this.$axios
 Vue.prototype.qs = qs           //全局注册，使用方法为:this.qs
 Vue.prototype.HOST = '/api'
+Vue.prototype.$x2js = new x2js() //创建x2js对象，挂到vue原型上
 
+// Vue.use(xmljs)
 Vue.use(VueUi)
 Vue.config.productionTip = false
 
