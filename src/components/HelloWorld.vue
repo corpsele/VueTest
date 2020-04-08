@@ -80,7 +80,7 @@
         </a>
       </li>
       <li>
-        <a href="#/list" target="_blank">Watch List</a>
+        <a href="/list" target="_blank">Watch List</a>
       </li>
     </ul>
   </div>

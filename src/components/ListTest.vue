@@ -87,6 +87,8 @@
             break;
         }
         this.$axios.get(strApi, {
+          // baseURL:process.env.API_ROOT,
+          crossDomain: true,
           params:{
 
           }
@@ -95,9 +97,11 @@
 
           console.log(this.$x2js.xml2js(response.data))
           let obj = this.$x2js.xml2js(response.data)
-          console.log(obj["rss"])
+          console.log("obj = " + obj)
           let rss = obj["rss"]
+          console.log("rss = " +rss)
           let channel1 = rss["channel"]
+          console.log("channel1 = " + channel1)
           let items = channel1["item"]
           console.log(items)
           this.arryData = items
