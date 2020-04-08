@@ -80,14 +80,14 @@
             return
             break;
           case 1:
-            strApi = this.HOST + "/rss/feed/35535"
+            strApi = "/rss/feed/35535"
             break;
           default:
             return
             break;
         }
         this.$axios.get(strApi, {
-          // baseURL:process.env.API_ROOT,
+          // baseURL: '/api',
           crossDomain: true,
           params:{
 

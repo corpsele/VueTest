@@ -18,6 +18,7 @@ import x2js from 'x2js'
 Vue.prototype.$axios = Axo    //全局注册，使用方法为:this.$axios
 Vue.prototype.qs = qs           //全局注册，使用方法为:this.qs
 Vue.prototype.HOST = '/api'
+Axo.defaults.baseURL = '/api'
 Vue.prototype.$x2js = new x2js() //创建x2js对象，挂到vue原型上
 
 // var koa = require('koa');
