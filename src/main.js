@@ -35,12 +35,17 @@ Vue.use(VueUi)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>',
-  mounted(){
+//cordova打包 App运行
+document.addEventListener('deviceready', function() {
+  new Vue({
+    el: '#app',
+    router,
+    components: { App },
+    template: '<App/>',
+    mounted(){
 
-  }
-})
+    }
+  })
+  window.navigator.splashscreen.hide()
+}, false)
+

@@ -58,6 +58,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
+    //网页的需要./  App  = /
     assetsPublicPath: './',
     // proxyTable: {
     //   '/api': {                                // 要代理的接口名
