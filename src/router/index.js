@@ -22,7 +22,8 @@ Vue.use(Router)
 // })
 
 const router = new VueRouter({
-  mode: 'history',
+  //web页面需要放开mode history
+  // mode: 'history',
   routes: [
     {
       path: '/',

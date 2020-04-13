@@ -80,7 +80,9 @@
         </a>
       </li>
       <li>
-        <a href="/list" target="_blank">Watch List</a>
+<!--        <a href="/list" target="_blank">Watch List</a>-->
+        <!--        App去掉 history后添加routerlink-->
+        <router-link to="{name: 'ListTest'}">Watch List</router-link>
       </li>
     </ul>
   </div>
@@ -93,6 +95,16 @@
       return {
         msg: 'Hello Vue, Fuck you ! Welcome to Your Vue.js App'
       }
+    },
+    beforeRouteUpdate (to, from, next) {
+      let isBack = this.$router.isBack
+      if (isBack) {
+        this.transitionName = 'slide-right'
+      } else {
+        this.transitionName = 'slide-left'
+      }
+      this.$router.isBack = false
+      next()
     }
   }
 </script>
@@ -116,4 +128,21 @@
   a {
     color: #42b983;
   }
+
+  .child-view {
+    position: absolute;
+    width:100%;
+    transition: all .5s cubic-bezier(.55,0,.1,1);
+  }
+  .slide-left-enter, .slide-right-leave-active {
+    opacity: 0;
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+  }
+  .slide-left-leave-active, .slide-right-enter {
+    opacity: 0;
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+  }
+
 </style>
