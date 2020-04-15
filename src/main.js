@@ -18,7 +18,18 @@ import x2js from 'x2js'
 Vue.prototype.$axios = Axo    //全局注册，使用方法为:this.$axios
 Vue.prototype.qs = qs           //全局注册，使用方法为:this.qs
 Vue.prototype.HOST = '/api'
-Axo.defaults.baseURL = '/api'
+
+//判断是否是iOS
+// let ua = navigator.userAgent.toLowerCase();
+// let isiOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+// if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+//   this.toast("iOS");
+//   Axo.defaults.baseURL = 'http://rss.rrys.tv'
+// }else{
+  Axo.defaults.baseURL = '/api'
+// }
+
+
 Vue.prototype.$x2js = new x2js() //创建x2js对象，挂到vue原型上
 
 // var koa = require('koa');
@@ -29,6 +40,13 @@ import cors from 'koa2-cors'
 let app = new koa();
 //开启
 app.use(cors());
+
+import promise from 'es6-promise';
+promise.polyfill();
+
+//引入fly实例
+import fly from 'flyio'
+
 
 // Vue.use(xmljs)
 Vue.use(VueUi)

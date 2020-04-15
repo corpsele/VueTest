@@ -82,7 +82,8 @@
       <li>
 <!--        <a href="/list" target="_blank">Watch List</a>-->
         <!--        App去掉 history后添加routerlink-->
-        <router-link to="{name: 'ListTest'}">Watch List</router-link>
+<!--        <router-link to="{name: 'ListTest'}">Watch List</router-link>-->
+        <el-button @click="gotoNext">Watch List</el-button>
       </li>
     </ul>
   </div>
@@ -105,6 +106,11 @@
       }
       this.$router.isBack = false
       next()
+    },
+    methods: {
+      gotoNext(){
+        this.$router.push({path: "/list"})
+      }
     }
   }
 </script>

@@ -40,6 +40,8 @@
 
 <script>
 
+  import Axo from "axios";
+
   export default {
     name: "ListTest",
     data() {
@@ -64,6 +66,14 @@
       init() {
 
       },
+      toast (str) {
+        let v = this
+        v.toastText = str
+        v.toastShow = true
+        setTimeout(function(){
+          v.toastShow = false
+        }, 1500)
+      },
       handleClose(done) {
         this.$confirm('Really？')
           .then(_ => {
@@ -75,17 +85,39 @@
       okAction() {
         this.dialogVisible = false;
         let strApi = ""
+        //判断是否是iOS
+        let ua = navigator.userAgent.toLowerCase();
+        let isiOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
         switch (this.selectedIndex) {
           case 0:
             return
             break;
           case 1:
+            if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+              this.toast("iOS");
+              Axo.defaults.baseURL = 'http://rss.rrys.tv'
+            }else{
+              Axo.defaults.baseURL = '/api'
+            }
             strApi = "/rss/feed/35535"
             break;
           default:
             return
             break;
         }
+
+        // this.fly.get('http://rss.rrys.tv/rss/feed/35535', {
+        //   // name: 'Doris',
+        //   // age: 24,
+        //   // phone:"18513222525"
+        // })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   });
+        // return
         this.$axios.get(strApi, {
           // baseURL: '/api',
           crossDomain: true,
@@ -127,5 +159,26 @@
 
   .el-carousel__item:nth-child(2n+1) {
     background-color: #d3dce6;
+  }
+
+  .toast {
+    position: fixed;
+    z-index: 2000;
+    left: 50%;
+    top:60%;
+    transition:all .5s;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    border-radius: 5px;
+    color:#FFF;
+    background: rgba(17, 17, 17, 0.7);
+    height: 45px;
+    line-height: 45px;
+    padding: 0 15px;
+
   }
 </style>
