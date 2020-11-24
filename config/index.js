@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
     proxyTable: {},
 
     // Various Dev Server settings
@@ -33,24 +33,28 @@ module.exports = {
      */
 
     // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',
+    // devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map',
 
     // If you have problems debugging vue-files in devtools,
     // set this to false - it *may* help
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
-    cacheBusting: true,
+    // cacheBusting: true,
+    cacheBusting: false,
 
     cssSourceMap: true
   },
 
   build: {
     // Template for index.html
+    // path.resolve(__dirname, '../dist/index.html')
     index: path.resolve(__dirname, '../dist/index.html'),
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
+    autoOpenBrowser: false,
 
     /**
      * Source Maps

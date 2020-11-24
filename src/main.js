@@ -10,7 +10,7 @@ Vue.use(ElementUI)
 
 // Vue.use(Cube)
 import VueUi from '@vue/ui'
-import { Editor, EditorContent } from 'tiptap'
+// import { Editor, EditorContent } from 'tiptap'
 
 Vue.use(VueUi)
 Vue.config.productionTip = false
