@@ -23,7 +23,7 @@
   "dependencies": {
     "@vue/ui": "^0.11.6",
     "ajax": "0.0.4",
-    "axios": "^0.19.2",
+    "axios": "^0.30.2",
     "cube-ui": "^1.12.36",
     "element-ui": "^2.13.0",
     "tiptap": "^1.26.7",
