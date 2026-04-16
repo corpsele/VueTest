@@ -12,7 +12,7 @@ function createWindow () {
     slashes: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      webSecurity: false
+      // webSecurity: false
     }
   })
   mainWindow.webContents.openDevTools();
